@@ -9,9 +9,18 @@
   body {
     margin: 0;
     padding: 0;
-    background: pink;
     font-family: Arial, sans-serif;
     overflow: hidden;
+    animation: bgGlow 10s ease infinite;
+    background: linear-gradient(-45deg, #ffb6c1, #ff69b4, #ffc0cb, #ff85a2);
+    background-size: 400% 400%;
+  }
+
+  /* 🌙 glowing background animation */
+  @keyframes bgGlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
 
   .container {
@@ -25,11 +34,18 @@
     z-index: 2;
   }
 
+  /* 🐱 blinking cat */
   .cat-img {
     width: 220px;
     border-radius: 20px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     margin-bottom: 20px;
+    animation: blink 4s infinite;
+  }
+
+  @keyframes blink {
+    0%, 92%, 100% { transform: scale(1); filter: brightness(1); }
+    95% { transform: scale(0.98); filter: brightness(0.4); }
   }
 
   .text {
@@ -51,7 +67,7 @@
   .bottom-left { bottom: 10px; left: 10px; }
   .bottom-right { bottom: 10px; right: 10px; }
 
-  /* 💖 floating hearts animation */
+  /* 💖 floating hearts */
   .heart {
     position: absolute;
     bottom: -20px;
@@ -62,14 +78,8 @@
   }
 
   @keyframes floatUp {
-    0% {
-      transform: translateY(0) scale(1);
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(-110vh) scale(1.8);
-      opacity: 0;
-    }
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-110vh) scale(1.8); opacity: 0; }
   }
 </style>
 
@@ -89,7 +99,7 @@
   <div class="text">i love you my gf 💖</div>
 </div>
 
-<!-- 💖 floating hearts script -->
+<!-- 💖 floating hearts -->
 <script>
   function createHeart() {
     const heart = document.createElement("div");
