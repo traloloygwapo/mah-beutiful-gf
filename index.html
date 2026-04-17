@@ -1,67 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sorry My GF</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: pink;
-      font-family: Arial, sans-serif;
-      overflow: hidden;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Love Page</title>
 
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
-      position: relative;
-    }
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background: pink;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+  }
 
-    .cat-img {
-      width: 220px;
-      border-radius: 20px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-      margin-bottom: 20px;
-    }
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
 
-    .text {
-      font-size: 32px;
-      font-weight: bold;
-      color: white;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    }
+  .cat-img {
+    width: 220px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+  }
 
-    .decor {
-      position: absolute;
-      font-size: 30px;
-      opacity: 0.8;
-    }
+  .text {
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  }
 
-    .top-left { top: 10px; left: 10px; }
-    .top-right { top: 10px; right: 10px; }
-    .bottom-left { bottom: 10px; left: 10px; }
-    .bottom-right { bottom: 10px; right: 10px; }
-  </style>
+  .decor {
+    position: absolute;
+    font-size: 30px;
+    opacity: 0.8;
+    z-index: 2;
+  }
+
+  .top-left { top: 10px; left: 10px; }
+  .top-right { top: 10px; right: 10px; }
+  .bottom-left { bottom: 10px; left: 10px; }
+  .bottom-right { bottom: 10px; right: 10px; }
+
+  /* 💖 floating hearts animation */
+  .heart {
+    position: absolute;
+    bottom: -20px;
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.9);
+    animation: floatUp 6s linear infinite;
+    z-index: 1;
+  }
+
+  @keyframes floatUp {
+    0% {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-110vh) scale(1.8);
+      opacity: 0;
+    }
+  }
+</style>
+
 </head>
+
 <body>
 
-  <div class="decor top-left">🌸💖</div>
-  <div class="decor top-right">💐🌷</div>
-  <div class="decor bottom-left">🌹✨</div>
-  <div class="decor bottom-right">💝🌸</div>
+<!-- decorations -->
+<div class="decor top-left">🌸💖</div>
+<div class="decor top-right">💐🌷</div>
+<div class="decor bottom-left">🌹✨</div>
+<div class="decor bottom-right">💝🌸</div>
 
-  <div class="container">
-    <!-- Replace cat.jpg with your image filename -->
-    <img class="cat-img" src="cat.jpg" alt="cat holding flower" />
+<!-- content -->
+<div class="container">
+  <img class="cat-img" src="cat.jpg" alt="cat holding flower" />
+  <div class="text">i love you my gf 💖</div>
+</div>
 
-    <div class="text">sorry my gf 🌹</div>
-  </div>
+<!-- 💖 floating hearts script -->
+<script>
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerText = "💖";
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (15 + Math.random() * 25) + "px";
+    heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 7000);
+  }
+
+  setInterval(createHeart, 300);
+</script>
 
 </body>
 </html>
